@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Reputation Checker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>IP Reputation Checker</h2>
+        <form method="POST">
+            <input type="text" name="ip" placeholder="Enter IP address" required>
+            <button type="submit">Check</button>
+        </form>
+
+        {% if result %}
+            <div class="result-box">
+                <h3>Result for IP: {{ ip }}</h3>
+                {% if result.status == 'malicious' %}
+                    <p class="malicious">{{ result.message }}</p>
+                {% elif result.status == 'safe' %}
+                    <p class="safe">{{ result.message }}</p>
+                {% else %}
+                    <p class="error">{{ result.message }}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer with GitHub icon and username -->
+    <footer>
+        <a href="https://github.com/pgurjarsec" target="_blank" class="github-link">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="github-icon">
+            pgurjarsec
+        </a>
+    </footer>
+</body>
+</html>
